@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const routes = require('./routes');
+const auth = require('./routes/authRoutes.js');
 const databaseConfig = require('./config/databaseConfig.js');
 require('dotenv').config();
 const app = express();
@@ -20,7 +20,7 @@ mongoose
   });
 
 app.use(bodyParser.json());
-app.use('/api', routes);
+app.use('/api', auth);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
